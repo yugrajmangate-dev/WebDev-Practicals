@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration + Validation</title>
+  <style>
+    body  { font-family: Arial; padding: 20px; background: #f0f0f0; }
+    input { display: block; margin: 4px 0 2px; padding: 8px; width: 280px; }
+    .err  { color: red; font-size: 12px; }
+    #success { color: green; font-weight: bold; margin-top: 14px; display: none; }
+    button { margin-top: 14px; padding: 9px 22px; background: navy; color: white; border: none; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2>Student Registration</h2>
+
+  <form onsubmit="return validate()">
+    Name: <input type="text" id="name">
+    <span class="err" id="e1"></span>
+
+    Email: <input type="text" id="email">
+    <span class="err" id="e2"></span>
+
+    Password: <input type="password" id="pass">
+    <span class="err" id="e3"></span>
+
+    Confirm Password: <input type="password" id="cpass">
+    <span class="err" id="e4"></span>
+
+    Phone: <input type="text" id="phone">
+    <span class="err" id="e5"></span>
+
+    <button>Register</button>
+  </form>
+  <div id="success">Registration Successful! Welcome!</div>
+
+<script>
+function validate() {
+  let ok = true;
+  ['e1','e2','e3','e4','e5'].forEach(id => document.getElementById(id).innerText = '');
+
+  let name  = document.getElementById('name').value.trim();
+  let email = document.getElementById('email').value.trim();
+  let pass  = document.getElementById('pass').value;
+  let cpass = document.getElementById('cpass').value;
+  let phone = document.getElementById('phone').value.trim();
+
+  if (!name)  { document.getElementById('e1').innerText = 'Name required'; ok = false; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('e2').innerText = 'Invalid email'; ok = false;
+  }
+  if (pass.length < 6) { document.getElementById('e3').innerText = 'Min 6 chars'; ok = false; }
+  if (pass !== cpass)   { document.getElementById('e4').innerText = 'Passwords do not match'; ok = false; }
+  if (!/^[6-9]\d{9}$/.test(phone)) { document.getElementById('e5').innerText = 'Invalid phone'; ok = false; }
+
+  if (ok) document.getElementById('success').style.display = 'block';
+  return false;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Marks Calculator</title>
+  <style>
+    body { font-family: Arial; padding: 20px;
+           background: linear-gradient(135deg, #74b9ff, #a29bfe); }
+    .box { background: white; padding: 24px; border-radius: 10px;
+           max-width: 400px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+    input { display: block; margin: 4px 0 12px; padding: 8px; width: 100%; }
+    button { padding: 9px 22px; background: navy; color: white;
+             border: none; cursor: pointer; width: 100%; margin-top: 4px; }
+    button:hover { background: #003080; }
+    #result { margin-top: 14px; padding: 12px; background: #f0fff0;
+              border-left: 4px solid green; display: none; }
+  </style>
+</head>
+<body>
+<div class="box">
+  <h2>Marks Calculator</h2>
+  Name: <input type="text" id="sname" placeholder="Student name">
+  Sub1: <input type="number" id="m1" placeholder="Marks">
+  Sub2: <input type="number" id="m2" placeholder="Marks">
+  Sub3: <input type="number" id="m3" placeholder="Marks">
+  Sub4: <input type="number" id="m4" placeholder="Marks">
+  Sub5: <input type="number" id="m5" placeholder="Marks">
+  <button onclick="calculate()">Calculate</button>
+  <div id="result"></div>
+</div>
+
+<script>
+function calculate() {
+  let name  = document.getElementById('sname').value;
+  let marks = [
+    +document.getElementById('m1').value,
+    +document.getElementById('m2').value,
+    +document.getElementById('m3').value,
+    +document.getElementById('m4').value,
+    +document.getElementById('m5').value
+  ];
+
+  let total   = marks.reduce((a, b) => a + b, 0);
+  let percent = (total / 500) * 100;
+  let grade;
+
+  if (percent >= 75)      grade = 'A';
+  else if (percent >= 60) grade = 'B';
+  else if (percent >= 50) grade = 'C';
+  else                     grade = 'F - Fail';
+
+  let res = document.getElementById('result');
+  res.style.display = 'block';
+  res.innerHTML = '<b>Name:</b> ' + name + '<br>' +
+                  '<b>Total:</b> ' + total + ' / 500<br>' +
+                  '<b>Percentage:</b> ' + percent.toFixed(2) + '%<br>' +
+                  '<b>Grade:</b> ' + grade;
+}
+</script>
+</div>
+</body>
+</html>

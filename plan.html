@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Web Dev Short Solutions</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap');
+:root{--bg:#0d0f18;--panel:#131624;--card:#1a1e2e;--border:#252a3d;--accent:#f97316;--green:#4ade80;--blue:#60a5fa;--yellow:#fbbf24;--purple:#c084fc;--text:#e2e8f0;--muted:#64748b;--code:#080b12}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);display:flex;min-height:100vh}
+#sb{width:220px;min-height:100vh;background:var(--panel);border-right:1px solid var(--border);position:fixed;left:0;top:0;overflow-y:auto;z-index:100;padding-bottom:30px}
+#sb h2{padding:14px 16px 8px;font-size:12px;color:var(--accent);letter-spacing:2px;border-bottom:1px solid var(--border)}
+.gl{padding:10px 16px 3px;font-size:9px;color:var(--muted);letter-spacing:2px;font-weight:700;text-transform:uppercase}
+.ni{display:flex;align-items:center;gap:7px;padding:7px 16px;font-size:11.5px;color:var(--muted);cursor:pointer;border-left:3px solid transparent;transition:all .15s;font-family:'JetBrains Mono',monospace}
+.ni:hover{color:var(--text);background:var(--card)}
+.ni.active{color:var(--accent);border-left-color:var(--accent);background:rgba(249,115,22,.07)}
+.dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.h{background:#f97316}.c{background:#60a5fa}.j{background:#fbbf24}.p{background:#c084fc}
+#main{margin-left:220px;padding:28px 36px;max-width:940px}
+.ph{margin-bottom:28px}
+.ph h1{font-size:24px;font-weight:800;color:var(--accent)}
+.ph p{color:var(--muted);font-size:12px;margin-top:4px}
+.tip{background:rgba(96,165,250,.07);border:1px solid rgba(96,165,250,.2);border-radius:5px;padding:8px 12px;font-size:11.5px;color:var(--muted);margin-bottom:10px}
+.tip b{color:var(--blue)}
+.sec{margin-bottom:40px;scroll-margin-top:16px}
+.sh{display:flex;align-items:center;gap:10px;margin-bottom:10px;padding-left:12px;border-left:3px solid var(--accent)}
+.sn{font-size:10px;font-weight:700;color:var(--accent);font-family:'JetBrains Mono',monospace}
+.st{font-size:15px;font-weight:700}
+.tb{display:inline-block;padding:2px 8px;border-radius:8px;font-size:9px;font-weight:700;letter-spacing:1px;font-family:'JetBrains Mono',monospace}
+.tb.h{background:rgba(249,115,22,.15);color:#f97316}
+.tb.c{background:rgba(96,165,250,.15);color:#60a5fa}
+.tb.j{background:rgba(251,191,36,.15);color:#fbbf24}
+.tb.p{background:rgba(192,132,252,.15);color:#c084fc}
+.cb{margin-bottom:10px}
+.cl{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;padding:6px 12px 5px;background:var(--code);border-radius:6px 6px 0 0;border:1px solid var(--border);border-bottom:1px solid #1a1f30;display:flex;justify-content:space-between;align-items:center}
+.cpb{background:var(--card);border:1px solid var(--border);color:var(--muted);font-size:9px;padding:2px 8px;border-radius:3px;cursor:pointer;font-family:'JetBrains Mono',monospace;transition:all .2s}
+.cpb:hover{color:var(--accent);border-color:var(--accent)}
+.cpb.ok{color:var(--green);border-color:var(--green)}
+pre{background:var(--code);padding:14px;overflow-x:auto;border:1px solid var(--border);border-top:none;border-radius:0 0 6px 6px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.7;tab-size:2}
+hr.d{border:none;border-top:1px solid var(--border);margin:32px 0}
+</style>
+</head>
+<body>
+<nav id="sb">
+  <h2>✍ SHORT CODES</h2>
+  <div class="gl">HTML</div>
+  <div class="ni active" onclick="go('q1')"><span class="dot h"></span>01 Portfolio</div>
+  <div class="ni" onclick="go('q2')"><span class="dot h"></span>02 Survey Form</div>
+  <div class="ni" onclick="go('q3')"><span class="dot h"></span>03 Restaurant</div>
+  <div class="ni" onclick="go('q4')"><span class="dot c"></span>04 College Site</div>
+  <div class="ni" onclick="go('q5')"><span class="dot h"></span>05 Reg Form</div>
+  <div class="ni" onclick="go('q6')"><span class="dot h"></span>06 TechCon 2025</div>
+  <div class="gl">CSS</div>
+  <div class="ni" onclick="go('q7')"><span class="dot c"></span>07 Result Dashboard</div>
+  <div class="ni" onclick="go('q8')"><span class="dot c"></span>08 Bootstrap Page</div>
+  <div class="gl">JavaScript</div>
+  <div class="ni" onclick="go('q9')"><span class="dot j"></span>09 Form Validation</div>
+  <div class="ni" onclick="go('q10')"><span class="dot j"></span>10 DOM Content</div>
+  <div class="ni" onclick="go('q11')"><span class="dot j"></span>11 Calculator</div>
+  <div class="gl">PHP</div>
+  <div class="ni" onclick="go('q12')"><span class="dot p"></span>12 PHP Greeting</div>
+  <div class="ni" onclick="go('q13')"><span class="dot p"></span>13 PHP POST Form</div>
+  <div class="ni" onclick="go('q14')"><span class="dot p"></span>14 String Manip.</div>
+  <div class="ni" onclick="go('q15')"><span class="dot p"></span>15 Array Marks</div>
+  <div class="ni" onclick="go('q16')"><span class="dot j"></span>16 Area Calc</div>
+  <div class="ni" onclick="go('q17')"><span class="dot p"></span>17 PHP Marks+Name</div>
+  <div class="ni" onclick="go('q18')"><span class="dot p"></span>18 Array Search</div>
+  <div class="ni" onclick="go('q19')"><span class="dot p"></span>19 String Ops</div>
+  <div class="gl">Mixed</div>
+  <div class="ni" onclick="go('q21')"><span class="dot j"></span>21 Reg+Validation</div>
+  <div class="ni" onclick="go('q22')"><span class="dot j"></span>22 Quiz App</div>
+  <div class="ni" onclick="go('q23')"><span class="dot j"></span>23 Marks Calc</div>
+  <div class="ni" onclick="go('q24')"><span class="dot p"></span>24 PHP Feedback</div>
+</nav>
+
+<main id="main">
+<div class="ph">
+  <h1>Web Dev — Short Exam-Ready Solutions</h1>
+  <p>SPPU SE · VSE-270-COM · All 24 Practicals · Minimal but Complete</p>
+</div>
+
+<!-- Q1 -->
+<section class="sec" id="q1">
+<div class="sh"><span class="sn">Q01</span><span class="st">Student Portfolio</span><span class="tb h">HTML</span></div>
+<div class="cb"><div class="cl">portfolio.html<button class="cpb" onclick="cp(this)">Copy</button></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Portfolio&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Rahul Sharma&lt;/h1&gt;
+  &lt;p&gt;&lt;b&gt;Course:&lt;/b&gt; B.E. Computer Engineering, SPPU&lt;/p&gt;
+  &lt;p&gt;&lt;b&gt;Email:&lt;/b&gt; rahul@mail.com &amp;nbsp; &lt;b&gt;Phone:&lt;/b&gt; 9876543210&lt;/p&gt;
+  &lt;hr&gt;
+
+  &lt;h2&gt;Hobbies&lt;/h2&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Coding&lt;/li&gt;
+    &lt;li&gt;Cricket&lt;/li&gt;
+    &lt;li&gt;Reading&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;hr&gt;
+
+  &lt;h2&gt;Select Preferences&lt;/h2&gt;
+  Name: &lt;input type="text"&gt;&lt;br&gt;&lt;br&gt;
+  Gender:
+  &lt;input type="radio" name="g"&gt; Male
+  &lt;input type="radio" name="g"&gt; Female&lt;br&gt;&lt;br&gt;
+  Interests:
+  &lt;input type="checkbox"&gt; Web Dev
+  &lt;input type="checkbox"&gt; AI/ML
+  &lt;input type="checkbox"&gt; DBMS
+&lt;/body&gt;
+&lt;/html&gt;</pre></div>
+</section><hr class="d">
+
+<!-- Q2 -->
+<section class="sec" id="q2">
+<div class="sh"><span class="sn">Q02</span><span class="st">Survey Form</span><span class="tb h">HTML</span><span class="tb c">CSS</span></div>
+<div class="cb"><div class="cl">survey.html<button class="cpb" onclick="cp(this)">Copy</button></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Survey Form&lt;/title&gt;
+  &lt;style&gt;
+    body { font-family: Arial; padding: 20px; background: #f0f0f0; }
+    input, select, textarea { display: block; margin: 6px 0 12px; padding: 7px; width: 300px; }
+    button { padding: 8px 20px; background: blue; color: white; border: none; cursor: pointer; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;Student Survey Form&lt;/h2&gt;
+  &lt;form&gt;
+    Name: &lt;input type="text" placeholder="Your name"&gt;
+    Email: &lt;input type="email" placeholder="Your email"&gt;
+
+    Gender:&lt;br&gt;
+    &lt;input type="radio" name="g"&gt; Male
+    &lt;input type="radio" name="g"&gt; Female&lt;br&gt;&lt;br&gt;
+
+    Year:
+    &lt;select&gt;
+      &lt;option&gt;First Year&lt;/option&gt;
+      &lt;option&gt;Second Year&lt;/option&gt;
+      &lt;option&gt;Third Year&lt;/option&gt;
+    &lt;/select&gt;
+
+    Interests:&lt;br&gt;
+    &lt;input type="checkbox"&gt; Web Dev
+    &lt;input type="checkbox"&gt; AI/ML
+    &lt;input type="checkbox"&gt; Cybersecurity&lt;br&gt;&lt;br&gt;
+
+    Feedback: &lt;textarea rows="3"&gt;&lt;/textarea&gt;
+
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div>
+</section><hr class="d">
+
+<!-- Q3 -->
+<section class="sec" id="q3">
+<div class="sh"><span class="sn">Q03</span><span class="st">Restaurant Website — CSS Grid</span><span class="tb h">HTML</span><span class="tb c">CSS Grid</span></div>
+<div class="cb"><div class="cl">restaurant.html<button class="cpb" onclick="cp(this)">Copy</button></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Restaurant&lt;/title&gt;
+  &lt;style&gt;
+    body { font-family: Arial; margin: 0; }
+    header { background: darkred; color: white; text-align: center; padding: 20px; }
+    nav    { background: #333; text-align: center; padding: 10px; }
+    nav a  { color: gold; margin: 0 15px; text-decoration: none; }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding: 20px;
+    }
+    .item { border: 1px solid #ccc; padding: 14px; text-align: center; border-radius: 6px; }
+    .item h3 { color: darkred; }
+    .price { color: green; font-weight: bold; }
+    footer { background: #333; color: white; text-align: center; padding: 12px; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;header&gt;
+  &lt;h1&gt;Spice Garden Restaurant&lt;/h1&gt;
+  &lt;p&gt;Authentic Indian Cuisine&lt;/p&gt;
+&lt;/header&gt;
+
+&lt;nav&gt;
+  &lt;a href="#menu"&gt;Menu&lt;/a&gt;
+  &lt;a href="#about"&gt;About&lt;/a&gt;
+  &lt;a href="#contact"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;h2 id="menu" style="text-align:center; margin-top:20px;"&gt;Our Menu&lt;/h2&gt;
+&lt;div class="menu-grid"&gt;
+  &lt;div class="item"&gt;&lt;h3&gt;Butter Chicken&lt;/h3&gt;&lt;p&gt;Creamy curry&lt;/p&gt;&lt;p class="price"&gt;Rs.280&lt;/p&gt;&lt;/div&gt;
+  &lt;div class="item"&gt;&lt;h3&gt;Biryani&lt;/h3&gt;&lt;p&gt;Fragrant rice&lt;/p&gt;&lt;p class="price"&gt;Rs.320&lt;/p&gt;&lt;/div&gt;
+  &lt;div class="item"&gt;&lt;h3&gt;Dal Makhani&lt;/h3&gt;&lt;p&gt;Black lentils&lt;/p&gt;&lt;p class="price"&gt;Rs.220&lt;/p&gt;&lt;/div&gt;
+  &lt;div class="item"&gt;&lt;h3&gt;Garlic Naan&lt;/h3&gt;&lt;p&gt;Tandoor bread&lt;/p&gt;&lt;p class="price"&gt;Rs.60&lt;/p&gt;&lt;/div&gt;
+  &lt;div class="item"&gt;&lt;h3&gt;Paneer Tikka&lt;/h3&gt;&lt;p&gt;Grilled paneer&lt;/p&gt;&lt;p class="price"&gt;Rs.250&lt;/p&gt;&lt;/div&gt;
+  &lt;div class="item"&gt;&lt;h3&gt;Gulab Jamun&lt;/h3&gt;&lt;p&gt;Sweet dessert&lt;/p&gt;&lt;p class="price"&gt;Rs.80&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;footer&gt;Contact: 020-12345678 | MG Road, Pune&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div>
+</section><hr class="d">
+
+<!-- Q4 -->
+<section class="sec" id="q4">
+<div class="sh"><span class="sn">Q04</span><span class="st">I2IT College Website with CSS</span><span class="tb c">CSS</span></div>
+<div class="cb"><div class="cl">college.html<button class="cpb" onclick="cp(this)">Copy</button></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;I2IT College&lt;/title&gt;
+  &lt;style&gt;
+    body  { font-family: Arial; margin: 0; }
+    header { background: navy; color: white; padding: 16px 20px; display: flex; align-items: center; gap: 16px; }
+    nav   { background: #003080; padding: 10px 20px; }
+    nav a { color: white; margin-right: 18px; text-decoration: none; font-weight: bold; }
+    nav a:hover { color: gold; }
+    .content { padding: 20px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 12px; }
+    th  { background: navy; color: white; padding: 10px; text-align: left; }
+    td  { padding: 8px 10px; border: 1px solid #ccc; }
+    tr:nth-child(even) { background: #eef; }
+    footer { background: navy; color: white; text-align: center; padding: 12px; margin-top: 20px; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;header&gt;
+  &lt;!-- Logo --&gt;
+  &lt;img src="https://via.placeholder.com/60" alt="Logo"&gt;
+  &lt;div&gt;
+    &lt;h2&gt;International Institute of Information Technology, Pune&lt;/h2&gt;
+    &lt;a href="https://www.isquareit.edu.in" style="color:lightblue;"&gt;www.isquareit.edu.in&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;nav&gt;
+  &lt;a href="#"&gt;Home&lt;/a&gt;
+  &lt;a href="#courses"&gt;Courses&lt;/a&gt;
+  &lt;a href="#"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;div class="content"&gt;
+  &lt;h2 id="courses"&gt;B.E. Computer Engineering — Subjects&lt;/h2&gt;
+  &lt;table&gt;
+    &lt;tr&gt;&lt;th&gt;Sr.No&lt;/th&gt;&lt;th&gt;Subject&lt;/th&gt;&lt;th&gt;Semester&lt;/th&gt;&lt;th&gt;Credits&lt;/th&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;Data Structures&lt;/td&gt;&lt;td&gt;3rd&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;DBMS&lt;/td&gt;&lt;td&gt;4th&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;Web Development Lab&lt;/td&gt;&lt;td&gt;4th&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;Computer Networks&lt;/td&gt;&lt;td&gt;5th&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+
+&lt;footer&gt;&amp;copy; 2025 I2IT Pune&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div>
+</section><hr class="d">
+
+<!-- Q5 -->
+<section class="sec" id="q5">
+<div class="sh"><span class="sn">Q05</span><span class="st">Student Registration Form</span><span class="tb h">HTML</span></div>
+<div class="cb"><div class="cl">reg_form.html<button class="cpb" onclick="cp(this)">Copy</button></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Registration&lt;/title&gt;
+  &lt;style&gt;
+    body { font-family: Arial; padding: 20px; }
+    input { display: block; margin: 6px 0 14px; padding: 7px; width: 280px; }
+    button { padding: 8px 22px; background: navy; color: white; border: none; cursor: pointer; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;Student Registration Form&lt;/h2&gt;
+  &lt;form&gt;
+    &lt;label&gt;Name:&lt;/label&gt;
+    &lt;input type="text" placeholder="Full Name" required&gt;
+
+    &lt;label&gt;Email:&lt;/label&gt;
+    &lt;input type="email" placeholder="Email Address" required&gt;
+
+    &lt;label&gt;Gender:&lt;/label&gt;
+    &lt;input type="radio" name="gender"&gt; Male
+    &lt;input type="radio" name="gender"&gt; Female&lt;br&gt;&lt;br&gt;
+
+    &lt;label&gt;Date of Birth:&lt;/label&gt;
+    &lt;input type="date"&gt;
+
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div>
+</section><hr class="d">
+
+<!-- Q6 -->
+<section class="sec" id="q6">
+<div class="sh"><span class="sn">Q06</span><span class="st">I2IT TechCon 2025 Event Page</span><span class="tb h">HTML</span></div>
+<div class="cb"><div class="cl">techcon.html<button class="cpb" onclick="cp(this)">Copy</button></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;TechCon 2025&lt;/title&gt;
+  &lt;style&gt;
+    body { font-family: Arial; margin: 0; }
+    header { background: #003080; color: white; text-align: center; padding: 24px; }
+    nav    { background: #222; text-align: center; padding: 10px; }
+    nav a  { color: cyan; margin: 0 14px; text-decoration: none; }
+    section { padding: 20px 30px; }
+    table  { border-collapse: collapse; width: 100%; }
+    th { background: #003080; color: white; padding: 10px; }
+    td { padding: 8px; border: 1px solid #ccc; }
+    input, textarea { display: block; margin: 6px 0 12px; padding: 7px; width: 280px; }
+    button { padding: 8px 20px; background: #003080; color: white; border: none; cursor: pointer; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;header&gt;
+  &lt;h1&gt;I2IT TechCon 2025&lt;/h1&gt;
+  &lt;p&gt;Annual Tech Event | March 15, 2025 | Pune&lt;/p&gt;
+&lt;/header&gt;
+
+&lt;nav&gt;
+  &lt;a href="#about"&gt;About&lt;/a&gt;
+  &lt;a href="#schedule"&gt;Schedule&lt;/a&gt;
+  &lt;a href="#contact"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;section id="about"&gt;
+  &lt;h2&gt;About&lt;/h2&gt;
+  &lt;p&gt;TechCon 2025 is I2IT's annual tech conference with talks, workshops and hackathons.&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;section id="schedule"&gt;
+  &lt;h2&gt;Schedule&lt;/h2&gt;
+  &lt;table&gt;
+    &lt;tr&gt;&lt;th&gt;Time&lt;/th&gt;&lt;th&gt;Event&lt;/th&gt;&lt;th&gt;Venue&lt;/th&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;9:00 AM&lt;/td&gt;&lt;td&gt;Inauguration&lt;/td&gt;&lt;td&gt;Auditorium&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;10:00 AM&lt;/td&gt;&lt;td&gt;Keynote: AI &amp; Future&lt;/td&gt;&lt;td&gt;Hall A&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;12:00 PM&lt;/td&gt;&lt;td&gt;Hackathon&lt;/td&gt;&lt;td&gt;Lab Block&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;5:00 PM&lt;/td&gt;&lt;td&gt;Prize Distribution&lt;/td&gt;&lt;td&gt;Auditorium&lt;/td&gt;&lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/section&gt;
+
+&lt;section id="contact"&gt;
+  &lt;h2&gt;Contact&lt;/h2&gt;
+  &lt;form&gt;
+    Name: &lt;input type="text"&gt;
+    Email: &lt;input type="email"&gt;
+    Message: &lt;textarea rows="3"&gt;&lt;/textarea&gt;
+    &lt;button type="submit"&gt;Send&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/section&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre></div>
+</section><hr class="d">
+
+<!-- Q7 -->
+<section class="sec" id="q7">
+<div class="sh"><span class="sn">Q07</span><span class="st">Result Dashboard — 3 Types of CSS</span><span class="tb c">Inline + Internal + External CSS</span></div>
+<div class="tip"><b>Remember:</b> Show all 3 types clearly. Inline = style="" on element | Internal = &lt;style&gt; in &lt;head&gt; | External = separate .css file linked with &lt;link&gt;</div>
+<div class="cb"><div class="cl">result.html<button class="cpb" onclick="cp(this)">Copy</button></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Result Dashboard&lt;/title&gt;
+
+  &lt;!-- EXTERNAL CSS (would be in style.css) --&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+
+  &lt;!-- INTERNAL CSS --&gt;
+  &lt;style&gt;
+    body  { font-family: Arial; padding: 20px; background: #f0f4ff; }
+    table { border-collapse: collapse; width: 60%; }
+    th    { background: navy; color: white; padding: 10px; }
+    td    { padding: 8px 10px; border: 1px solid #ccc; }
+    tr:nth-child(even) { background: #eef; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Student Result Dashboard&lt;/h1&gt;
+  &lt;p&gt;Name: Rahul Sharma | Roll: 2201&lt;/p&gt;
+
+  &lt;table&gt;
+    &lt;tr&gt;&lt;th&gt;Subject&lt;/th&gt;&lt;th&gt;Marks&lt;/th&gt;&lt;th&gt;Grade&lt;/th&gt;&lt;/tr&gt;
+
+    &lt;!-- INLINE CSS for top scorer --&gt;
+    &lt;tr style="background: yellow; font-weight: bold;"&gt;
+      &lt;td&gt;Maths (Top Scorer)&lt;/td&gt;&lt;td&gt;92&lt;/td&gt;&lt;td style="color:green"&gt;A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Web Development&lt;/td&gt;&lt;td&gt;85&lt;/td&gt;&lt;td style="color:green"&gt;A&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;DBMS&lt;/td&gt;&lt;td&gt;78&lt;/td&gt;&lt;td style="color:green"&gt;A&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;TOC&lt;/td&gt;&lt;td&gt;65&lt;/td&gt;&lt;td style="color:orange"&gt;B&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;CN&lt;/td&gt;&lt;td&gt;55&lt;/td&gt;&lt;td style="color:red"&gt;C&lt;/td&gt;&lt;/tr&gt;
+  &lt;/table&gt;
+
+  &lt;p&gt;&lt;b&gt;Total: 375/500 | Percentage: 75% | Result: PASS&lt;/b&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div>
+
+<div class="cb"><div class="cl">style.css  (External CSS file)<button class="cpb" onclick="cp(this)">Copy</button></div><pre>/* External CSS — save this as style.css */
+h1 {
+  color: navy;
+  text-align: center;
+}</pre></div>
+</section><hr class="d">
+
+<!-- Q8 -->
+<section class="sec" id="q8">
+<div class="sh"><span class="sn">Q08</span><span class="st">Bootstrap Responsive College Homepage</span><span class="tb c">Bootstrap 5</span></div>
+<div class="cb"><div class="cl">bootstrap_college.html<button class="cpb" onclick="cp(this)">Copy</button></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;College Home&lt;/title&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;nav class="navbar navbar-expand-lg navbar-dark bg-primary"&gt;
+  &lt;div class="container"&gt;
+    &lt;a class="navbar-brand" href="#"&gt;I2IT Pune&lt;/a&gt;
+    &lt;button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"&gt;
+      &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div class="collapse navbar-collapse" id="nav"&gt;
+      &lt;ul class="navbar-nav ms-auto"&gt;
+        &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Courses&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;div class="bg-primary text-white text-center py-5"&gt;
+  &lt;h1&gt;Welcome to I2IT Pune&lt;/h1&gt;
+  &lt;p&gt;Shaping Engineers, Building Futures&lt;/p&gt;
+  &lt;a href="#" class="btn btn-light"&gt;Explore Courses&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class="container my-4"&gt;
+  &lt;div class="row g-3"&gt;
+    &lt;div class="col-md-4"&gt;
+      &lt;div class="card p-3 text-center"&gt;
+        &lt;h5&gt;Computer Engineering&lt;/h5&gt;
+        &lt;p&gt;4-year B.E. program&lt;/p&gt;
+        &lt;a href="#" class="btn btn-primary btn-sm"&gt;Learn More&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-md-4"&gt;
+      &lt;div class="card p-3 text-center"&gt;
+        &lt;h5&gt;Awards&lt;/h5&gt;
+        &lt;p&gt;Top ranked institute&lt;/p&gt;
+        &lt;a href="#" class="btn btn-success btn-sm"&gt;See More&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-md-4"&gt;
+      &lt;div class="card p-3 text-center"&gt;
+        &lt;h5&gt;Placements&lt;/h5&gt;
+        &lt;p&gt;95% placement record&lt;/p&gt;
+        &lt;a href="#" class="btn btn-warning btn-sm"&gt;View&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;footer class="bg-primary text-white text-center py-3"&gt;
+  &amp;copy; 2025 I2IT Pune
+&lt;/footer&gt;
+
+&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div>
+</section><hr class="d">
+
+<!-- Q9 -->
+<section class="sec" id="q9">
+<div class="sh"><span class="sn">Q09</span><span class="st">Library Signup — JS Form Validation</span><span class="tb j">JavaScript</span></div>
+<div class="cb"><div class="cl">signup_validation.html<button class="cpb" onclick="cp(this)">Copy</button></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Library Signup&lt;/title&gt;
+  &lt;style&gt;
+    body { font-family: Arial; padding: 20px; }
+    input { display: block; margin: 5px 0 2px; padding: 7px; width: 260px; }
+    .err { color: red; font-size: 12px; }
+    button { margin-top: 12px; padding: 8px 20px; background: navy; color: white; border: none; cursor: pointer; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;Library Signup&lt;/h2&gt;
+  &lt;form onsubmit="return validate()"&gt;
+    Name:    &lt;input type="text"   id="name"&gt;   &lt;span class="err" id="e1"&gt;&lt;/span&gt;
+    Email:   &lt;input type="text"   id="email"&gt;  &lt;span class="err" id="e2"&gt;&lt;/span&gt;
+    Mobile:  &lt;input type="text"   id="mob"&gt;    &lt;span class="err" id="e3"&gt;&lt;/span&gt;
+    Password:&lt;input type="password" id="pass"&gt; &lt;span class="err" id="e4"&gt;&lt;/span&gt;
+    &lt;button&gt;Sign Up&lt;/button&gt;
+  &lt;/form&gt;
+
+&lt;script&gt;
+function validate() {
+  let ok = true;
+  // clear errors
+  ['e1','e2','e3','e4'].forEach(id => document.getElementById(id).innerText = '');
+
+  let name  = document.getElementById('name').value.trim();
+  let email = document.getElementById('email').value.trim();
+  let mob   = document.getElementById('mob').value.trim();
+  let pass  = document.getElementById('pass').value;
+
+  if (name == '') {
+    document.getElementById('e1').innerText = 'Name required'; ok = false;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('e2').innerText = 'Invalid email'; ok = false;
+  }
+  if (!/^[6-9]\d{9}$/.test(mob)) {
+    document.getElementById('e3').innerText = 'Invalid mobile (10 digits)'; ok = false;
+  }
+  if (pass.length &lt; 6) {
+    document.getElementById('e4').innerText = 'Min 6 characters'; ok = false;
+  }
+
+  if (ok) alert('Signup Successful!');
+  return false;
+}
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div>
+</section><hr class="d">
+
+<!-- Q10 -->
+<section class="sec" id="q10">
+<div class="sh"><span class="sn">Q10</span><span class="st">DOM — Display Dynamic Content</span><span class="tb j">JavaScript DOM</span></div>
+<div class="cb"><div class="cl">dom.html<button class="cpb" onclick="cp(this)">Copy</button></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;DOM Demo&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;DOM Dynamic Content&lt;/h2&gt;
+
+  &lt;input type="text" id="name" placeholder="Enter student name"&gt;
+  &lt;input type="number" id="marks" placeholder="Enter marks"&gt;
+  &lt;button onclick="addStudent()"&gt;Add Student&lt;/button&gt;
+  &lt;button onclick="clearAll()"&gt;Clear&lt;/button&gt;
+
+  &lt;div id="output"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+let count = 1;
+
+function addStudent() {
+  let name  = document.getElementById('name').value;
+  let marks = document.getElementById('marks').value;
+
+  // Create new element using DOM
+  let p = document.createElement('p');
+  p.innerHTML = count + '. &lt;b&gt;' + name + '&lt;/b&gt; — Marks: ' + marks;
+  document.getElementById('output').appendChild(p);
+
+  // Change heading dynamically
+  document.querySelector('h2').innerText = 'Students Added: ' + count;
+  count++;
+}
+
+function clearAll() {
+  document.getElementById('output').innerHTML = '';
+  document.querySelector('h2').innerText = 'DOM Dynamic Content';
+  count = 1;
+}
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div>
+</section><hr class="d">
+
+<!-- Q11 -->
+<section class="sec" id="q11">
+<div class="sh"><span class="sn">Q11</span><span class="st">Simple Calculator — switch-case</span><span class="tb j">JavaScript</span></div>
+<div class="cb"><div class="cl">calculator.html<button class="cpb" onclick="cp(this)">Copy</button></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Calculator&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;Simple Calculator&lt;/h2&gt;
+  Number 1: &lt;input type="number" id="n1"&gt;&lt;br&gt;&lt;br&gt;
+  Number 2: &lt;input type="number" id="n2"&gt;&lt;br&gt;&lt;br&gt;
+
+  &lt;button onclick="calc('+')'"&gt;Add&lt;/button&gt;
+  &lt;button onclick="calc('-')"&gt;Subtract&lt;/button&gt;
+  &lt;button onclick="calc('*')"&gt;Multiply&lt;/button&gt;
+  &lt;button onclick="calc('/')"&gt;Divide&lt;/button&gt;
+
+  &lt;p id="result"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+function calc(op) {
+  let a = parseFloat(document.getElementById('n1').value);
+  let b = parseFloat(document.getElementById('n2').value);
+  let res;
+
+  switch(op) {
+    case '+': res = a + b; break;
+    case '-': res = a - b; break;
+    case '*': res = a * b; break;
+    case '/': res = (b != 0) ? a / b : 'Cannot divide by zero'; break;
+    default:  res = 'Invalid';
+  }
+
+  document.getElementById('result').innerHTML = '&lt;b&gt;Result: ' + res + '&lt;/b&gt;';
+}
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div>
+</section><hr class="d">
+
+<!-- Q12 -->
+<section class="sec" id="q12">
+<div class="sh"><span class="sn">Q12</span><span class="st">PHP Dashboard — Welcome + Date & Time</span><span class="tb p">PHP</span></div>
+<div class="cb"><div class="cl">greeting.php<button class="cpb" onclick="cp(this)">Copy</button></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Dashboard&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;Dashboard&lt;/h2&gt;
+&lt;?php
+  echo "&lt;h3&gt;Welcome, Admin!&lt;/h3&gt;";
+  echo "&lt;p&gt;Date: " . date("d-m-Y") . "&lt;/p&gt;";
+  echo "&lt;p&gt;Time: " . date("h:i:s A") . "&lt;/p&gt;";
+  echo "&lt;p&gt;Day: "  . date("l") . "&lt;/p&gt;";
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div>
+</section><hr class="d">
+
+<!-- Q13 -->
+<section class="sec" id="q13">
+<div class="sh"><span class="sn">Q13</span><span class="st">PHP Project Competition Registration — POST</span><span class="tb p">PHP</span></div>
+<div class="cb"><div class="cl">registration.php<button class="cpb" onclick="cp(this)">Copy</button></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Registration&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;Project Competition Registration&lt;/h2&gt;
+
+  &lt;form method="POST" action=""&gt;
+    Name:    &lt;input type="text"   name="name"   required&gt;&lt;br&gt;&lt;br&gt;
+    Email:   &lt;input type="email"  name="email"  required&gt;&lt;br&gt;&lt;br&gt;
+    College: &lt;input type="text"   name="college" value="I2IT Pune"&gt;&lt;br&gt;&lt;br&gt;
+    Project: &lt;input type="text"   name="project" required&gt;&lt;br&gt;&lt;br&gt;
+    Team Size:
+    &lt;select name="team"&gt;
+      &lt;option&gt;1&lt;/option&gt;&lt;option&gt;2&lt;/option&gt;&lt;option&gt;3&lt;/option&gt;&lt;option&gt;4&lt;/option&gt;
+    &lt;/select&gt;&lt;br&gt;&lt;br&gt;
+    &lt;input type="submit" value="Register"&gt;
+  &lt;/form&gt;
+
+&lt;?php
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    echo "&lt;hr&gt;&lt;h3&gt;Registration Details:&lt;/h3&gt;";
+    echo "&lt;p&gt;Name: "     . $_POST['name']    . "&lt;/p&gt;";
+    echo "&lt;p&gt;Email: "    . $_POST['email']   . "&lt;/p&gt;";
+    echo "&lt;p&gt;College: "  . $_POST['college'] . "&lt;/p&gt;";
+    echo "&lt;p&gt;Project: "  . $_POST['project'] . "&lt;/p&gt;";
+    echo "&lt;p&gt;Team Size: ". $_POST['team']    . "&lt;/p&gt;";
+  }
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div>
+</section><hr class="d">
+
+<!-- Q14 -->
+<section class="sec" id="q14">
+<div class="sh"><span class="sn">Q14</span><span class="st">PHP String Manipulation</span><span class="tb p">PHP</span></div>
+<div class="cb"><div class="cl">strings.php<button class="cpb" onclick="cp(this)">Copy</button></div><pre>&lt;?php
+  $str = "Hello World";
+
+  echo "Original: "  . $str . "&lt;br&gt;";
+  echo "Length: "    . strlen($str) . "&lt;br&gt;";
+  echo "Reverse: "   . strrev($str) . "&lt;br&gt;";
+  echo "Substring: " . substr($str, 0, 5) . "&lt;br&gt;";
+  echo "Upper: "     . strtoupper($str) . "&lt;br&gt;";
+  echo "Lower: "     . strtolower($str) . "&lt;br&gt;";
+  echo "Replace: "   . str_replace("World", "PHP", $str) . "&lt;br&gt;";
+?&gt;</pre></div>
+</section><hr class="d">
+
+<!-- Q15 -->
+<section class="sec" id="q15">
+<div class="sh"><span class="sn">Q15</span><span class="st">PHP Array — Marks, Max & Percentage</span><span class="tb p">PHP</span></div>
+<div class="cb"><div class="cl">marks.php<button class="cpb" onclick="cp(this)">Copy</button></div><pre>&lt;?php
+  $subjects = array("Maths","Physics","Chemistry","English","CS");
+  $marks    = array(85, 72, 90, 65, 88);
+
+  echo "&lt;h3&gt;Marks Report&lt;/h3&gt;";
+  echo "&lt;table border='1' cellpadding='6'&gt;";
+  echo "&lt;tr&gt;&lt;th&gt;Subject&lt;/th&gt;&lt;th&gt;Marks&lt;/th&gt;&lt;/tr&gt;";
+  for ($i = 0; $i &lt; count($subjects); $i++) {
+    echo "&lt;tr&gt;&lt;td&gt;" . $subjects[$i] . "&lt;/td&gt;&lt;td&gt;" . $marks[$i] . "&lt;/td&gt;&lt;/tr&gt;";
+  }
+  echo "&lt;/table&gt;";
+
+  $total   = array_sum($marks);
+  $max     = max($marks);
+  $percent = ($total / 500) * 100;
+
+  echo "&lt;p&gt;Total: $total&lt;/p&gt;";
+  echo "&lt;p&gt;Maximum: $max&lt;/p&gt;";
+  echo "&lt;p&gt;Percentage: $percent %&lt;/p&gt;";
+?&gt;</pre></div>
+</section><hr class="d">
+
+<!-- Q16 -->
+<section class="sec" id="q16">
+<div class="sh"><span class="sn">Q16</span><span class="st">Area Calculator — Rectangle, Triangle, Circle</span><span class="tb j">JavaScript</span></div>
+<div class="cb"><div class="cl">area.html<button class="cpb" onclick="cp(this)">Copy</button></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Area Calculator&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;Area Calculator&lt;/h2&gt;
+  Shape:
+  &lt;select id="shape" onchange="showFields()"&gt;
+    &lt;option value=""&gt;-- Select --&lt;/option&gt;
+    &lt;option value="rect"&gt;Rectangle&lt;/option&gt;
+    &lt;option value="tri"&gt;Triangle&lt;/option&gt;
+    &lt;option value="circ"&gt;Circle&lt;/option&gt;
+  &lt;/select&gt;
+  &lt;br&gt;&lt;br&gt;
+  &lt;div id="fields"&gt;&lt;/div&gt;
+  &lt;p id="result"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+function showFields() {
+  let s = document.getElementById('shape').value;
+  let html = '';
+  switch(s) {
+    case 'rect': html = 'Length: &lt;input id="l"&gt; Width: &lt;input id="w"&gt;'; break;
+    case 'tri':  html = 'Base: &lt;input id="b"&gt; Height: &lt;input id="h"&gt;';  break;
+    case 'circ': html = 'Radius: &lt;input id="r"&gt;';                        break;
+  }
+  if (html) html += ' &lt;button onclick="calcArea()"&gt;Calculate&lt;/button&gt;';
+  document.getElementById('fields').innerHTML = html;
+}
+
+function calcArea() {
+  let s = document.getElementById('shape').value;
+  let area;
+  switch(s) {
+    case 'rect': area = document.getElementById('l').value * document.getElementById('w').value; break;
+    case 'tri':  area = 0.5 * document.getElementById('b').value * document.getElementById('h').value; break;
+    case 'circ': area = (Math.PI * Math.pow(document.getElementById('r').value, 2)).toFixed(2); break;
+  }
+  document.getElementById('result').innerHTML = '&lt;b&gt;Area = ' + area + ' sq.units&lt;/b&gt;';
+}
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div>
+</section><hr class="d">
+
+<!-- Q17 -->
+<section class="sec" id="q17">
+<div class="sh"><span class="sn">Q17</span><span class="st">PHP — Student Name + 5 Subject Marks via POST</span><span class="tb p">PHP</span></div>
+<div class="cb"><div class="cl">student_marks.php<button class="cpb" onclick="cp(this)">Copy</button></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Student Marks&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;Student Marks Form&lt;/h2&gt;
+
+  &lt;form method="POST" action=""&gt;
+    Name: &lt;input type="text" name="name" required&gt;&lt;br&gt;&lt;br&gt;
+    &lt;?php for($i=1; $i&lt;=5; $i++): ?&gt;
+      Subject &lt;?=$i?&gt;: &lt;input type="number" name="marks[]" min="0" max="100"&gt;&lt;br&gt;&lt;br&gt;
+    &lt;?php endfor; ?&gt;
+    &lt;input type="submit" value="Submit"&gt;
+  &lt;/form&gt;
+
+&lt;?php
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $name   = $_POST['name'];
+    $marks  = $_POST['marks'];
+    $total  = array_sum($marks);
+    $avg    = $total / count($marks);
+    $max    = max($marks);
+
+    echo "&lt;hr&gt;&lt;h3&gt;Result&lt;/h3&gt;";
+    echo "&lt;p&gt;Name (Original): $name&lt;/p&gt;";
+    echo "&lt;p&gt;Name (Uppercase): " . strtoupper($name) . "&lt;/p&gt;";
+    echo "&lt;p&gt;Name Length: " . strlen($name) . "&lt;/p&gt;";
+    echo "&lt;p&gt;Total: $total / 500&lt;/p&gt;";
+    echo "&lt;p&gt;Average: $avg&lt;/p&gt;";
+    echo "&lt;p&gt;Highest: $max&lt;/p&gt;";
+  }
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div>
+</section><hr class="d">
+
+<!-- Q18 -->
+<section class="sec" id="q18">
+<div class="sh"><span class="sn">Q18</span><span class="st">PHP — Search Roll Number in Array</span><span class="tb p">PHP</span></div>
+<div class="cb"><div class="cl">search.php<button class="cpb" onclick="cp(this)">Copy</button></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Array Search&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;Search Roll Number&lt;/h2&gt;
+
+  &lt;form method="POST" action=""&gt;
+    Enter Roll No: &lt;input type="number" name="roll"&gt;
+    &lt;input type="submit" value="Search"&gt;
+  &lt;/form&gt;
+
+&lt;?php
+  $rolls = array(101, 102, 103, 104, 105);
+  echo "&lt;p&gt;Available Rolls: " . implode(", ", $rolls) . "&lt;/p&gt;";
+
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $search = $_POST['roll'];
+    if (in_array($search, $rolls)) {
+      echo "&lt;p style='color:green'&gt;Roll No $search FOUND!&lt;/p&gt;";
+    } else {
+      echo "&lt;p style='color:red'&gt;Roll No $search NOT FOUND!&lt;/p&gt;";
+    }
+  }
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div>
+</section><hr class="d">
+
+<!-- Q19 -->
+<section class="sec" id="q19">
+<div class="sh"><span class="sn">Q19</span><span class="st">PHP — All String Operations (a to f)</span><span class="tb p">PHP</span></div>
+<div class="cb"><div class="cl">string_ops.php<button class="cpb" onclick="cp(this)">Copy</button></div><pre>&lt;?php
+  $str = "hello world from php";
+  $num = "000056.8";
+
+  echo "Original: $str &lt;br&gt;";
+  echo "a) Uppercase: "   . strtoupper($str) . "&lt;br&gt;";
+  echo "b) Lowercase: "   . strtolower($str) . "&lt;br&gt;";
+  echo "c) ucfirst: "     . ucfirst($str)    . "&lt;br&gt;";
+  echo "d) ucwords: "     . ucwords($str)    . "&lt;br&gt;";
+  echo "e) Remove leading zeros from $num: " . ltrim($num, '0') . "&lt;br&gt;";
+  echo "f) Reverse: "     . strrev($str)     . "&lt;br&gt;";
+  echo "f) Length: "      . strlen($str)     . "&lt;br&gt;";
+  echo "f) Substring(0,5): " . substr($str, 0, 5) . "&lt;br&gt;";
+?&gt;</pre></div>
+</section><hr class="d">
+
+<!-- Q21 -->
+<section class="sec" id="q21">
+<div class="sh"><span class="sn">Q21</span><span class="st">Registration Form + JS Validation + CSS + Success Message</span><span class="tb j">JS</span><span class="tb c">CSS</span></div>
+<div class="cb"><div class="cl">reg_validate.html<button class="cpb" onclick="cp(this)">Copy</button></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Registration + Validation&lt;/title&gt;
+  &lt;style&gt;
+    body  { font-family: Arial; padding: 20px; background: #f0f0f0; }
+    input { display: block; margin: 4px 0 2px; padding: 8px; width: 280px; }
+    .err  { color: red; font-size: 12px; }
+    #success { color: green; font-weight: bold; margin-top: 14px; display: none; }
+    button { margin-top: 14px; padding: 9px 22px; background: navy; color: white; border: none; cursor: pointer; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;Student Registration&lt;/h2&gt;
+
+  &lt;form onsubmit="return validate()"&gt;
+    Name: &lt;input type="text" id="name"&gt;
+    &lt;span class="err" id="e1"&gt;&lt;/span&gt;
+
+    Email: &lt;input type="text" id="email"&gt;
+    &lt;span class="err" id="e2"&gt;&lt;/span&gt;
+
+    Password: &lt;input type="password" id="pass"&gt;
+    &lt;span class="err" id="e3"&gt;&lt;/span&gt;
+
+    Confirm Password: &lt;input type="password" id="cpass"&gt;
+    &lt;span class="err" id="e4"&gt;&lt;/span&gt;
+
+    Phone: &lt;input type="text" id="phone"&gt;
+    &lt;span class="err" id="e5"&gt;&lt;/span&gt;
+
+    &lt;button&gt;Register&lt;/button&gt;
+  &lt;/form&gt;
+  &lt;div id="success"&gt;Registration Successful! Welcome!&lt;/div&gt;
+
+&lt;script&gt;
+function validate() {
+  let ok = true;
+  ['e1','e2','e3','e4','e5'].forEach(id => document.getElementById(id).innerText = '');
+
+  let name  = document.getElementById('name').value.trim();
+  let email = document.getElementById('email').value.trim();
+  let pass  = document.getElementById('pass').value;
+  let cpass = document.getElementById('cpass').value;
+  let phone = document.getElementById('phone').value.trim();
+
+  if (!name)  { document.getElementById('e1').innerText = 'Name required'; ok = false; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('e2').innerText = 'Invalid email'; ok = false;
+  }
+  if (pass.length &lt; 6) { document.getElementById('e3').innerText = 'Min 6 chars'; ok = false; }
+  if (pass !== cpass)   { document.getElementById('e4').innerText = 'Passwords do not match'; ok = false; }
+  if (!/^[6-9]\d{9}$/.test(phone)) { document.getElementById('e5').innerText = 'Invalid phone'; ok = false; }
+
+  if (ok) document.getElementById('success').style.display = 'block';
+  return false;
+}
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div>
+</section><hr class="d">
+
+<!-- Q22 -->
+<section class="sec" id="q22">
+<div class="sh"><span class="sn">Q22</span><span class="st">Quiz Web App — 10 MCQ with Score</span><span class="tb j">JavaScript</span></div>
+<div class="cb"><div class="cl">quiz.html<button class="cpb" onclick="cp(this)">Copy</button></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Simple Quiz&lt;/title&gt;
+  &lt;style&gt;
+    body { font-family: Arial; padding: 20px; }
+    .q   { margin: 14px 0; padding: 12px; background: #f5f5f5; border-radius: 5px; }
+    button { margin-top: 16px; padding: 9px 22px; background: navy; color: white; border: none; cursor: pointer; }
+    #score { font-size: 20px; font-weight: bold; color: navy; margin-top: 14px; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;Simple Quiz&lt;/h2&gt;
+  &lt;form id="qf"&gt;
+
+  &lt;div class="q"&gt;1. HTML stands for?&lt;br&gt;
+    &lt;input type="radio" name="q1" value="a"&gt; Hyper Transfer Markup Language&lt;br&gt;
+    &lt;input type="radio" name="q1" value="b"&gt; Hyper Text Markup Language&lt;br&gt;
+    &lt;input type="radio" name="q1" value="c"&gt; Hyper Text Modern Language
+  &lt;/div&gt;
+
+  &lt;div class="q"&gt;2. Tag for hyperlink?&lt;br&gt;
+    &lt;input type="radio" name="q2" value="a"&gt; &amp;lt;link&amp;gt;&lt;br&gt;
+    &lt;input type="radio" name="q2" value="b"&gt; &amp;lt;a&amp;gt;&lt;br&gt;
+    &lt;input type="radio" name="q2" value="c"&gt; &amp;lt;href&amp;gt;
+  &lt;/div&gt;
+
+  &lt;div class="q"&gt;3. CSS stands for?&lt;br&gt;
+    &lt;input type="radio" name="q3" value="a"&gt; Cascading Style Sheets&lt;br&gt;
+    &lt;input type="radio" name="q3" value="b"&gt; Colorful Style Sheets&lt;br&gt;
+    &lt;input type="radio" name="q3" value="c"&gt; Computer Style System
+  &lt;/div&gt;
+
+  &lt;div class="q"&gt;4. JS method to select element by ID?&lt;br&gt;
+    &lt;input type="radio" name="q4" value="a"&gt; querySelector()&lt;br&gt;
+    &lt;input type="radio" name="q4" value="b"&gt; getElementById()&lt;br&gt;
+    &lt;input type="radio" name="q4" value="c"&gt; getElement()
+  &lt;/div&gt;
+
+  &lt;div class="q"&gt;5. PHP stands for?&lt;br&gt;
+    &lt;input type="radio" name="q5" value="a"&gt; Private Home Page&lt;br&gt;
+    &lt;input type="radio" name="q5" value="b"&gt; PHP Hypertext Preprocessor&lt;br&gt;
+    &lt;input type="radio" name="q5" value="c"&gt; Public Home Page
+  &lt;/div&gt;
+
+  &lt;div class="q"&gt;6. CSS property for text colour?&lt;br&gt;
+    &lt;input type="radio" name="q6" value="a"&gt; font-color&lt;br&gt;
+    &lt;input type="radio" name="q6" value="b"&gt; text-color&lt;br&gt;
+    &lt;input type="radio" name="q6" value="c"&gt; color
+  &lt;/div&gt;
+
+  &lt;div class="q"&gt;7. Largest heading tag?&lt;br&gt;
+    &lt;input type="radio" name="q7" value="a"&gt; &amp;lt;h6&amp;gt;&lt;br&gt;
+    &lt;input type="radio" name="q7" value="b"&gt; &amp;lt;h1&amp;gt;&lt;br&gt;
+    &lt;input type="radio" name="q7" value="c"&gt; &amp;lt;heading&amp;gt;
+  &lt;/div&gt;
+
+  &lt;div class="q"&gt;8. JavaScript is a ___ language?&lt;br&gt;
+    &lt;input type="radio" name="q8" value="a"&gt; Compiled&lt;br&gt;
+    &lt;input type="radio" name="q8" value="b"&gt; Interpreted&lt;br&gt;
+    &lt;input type="radio" name="q8" value="c"&gt; Machine-level
+  &lt;/div&gt;
+
+  &lt;div class="q"&gt;9. PHP file extension?&lt;br&gt;
+    &lt;input type="radio" name="q9" value="a"&gt; .html&lt;br&gt;
+    &lt;input type="radio" name="q9" value="b"&gt; .php&lt;br&gt;
+    &lt;input type="radio" name="q9" value="c"&gt; .js
+  &lt;/div&gt;
+
+  &lt;div class="q"&gt;10. Bootstrap is a ___ framework?&lt;br&gt;
+    &lt;input type="radio" name="q10" value="a"&gt; Backend&lt;br&gt;
+    &lt;input type="radio" name="q10" value="b"&gt; Database&lt;br&gt;
+    &lt;input type="radio" name="q10" value="c"&gt; Frontend CSS
+  &lt;/div&gt;
+
+  &lt;button type="button" onclick="submitQuiz()"&gt;Submit Quiz&lt;/button&gt;
+  &lt;/form&gt;
+  &lt;div id="score"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+// Correct answers
+const ans = {q1:'b',q2:'b',q3:'a',q4:'b',q5:'b',q6:'c',q7:'b',q8:'b',q9:'b',q10:'c'};
+
+function submitQuiz() {
+  let score = 0;
+  for (let q in ans) {
+    let sel = document.querySelector('input[name="'+q+'"]:checked');
+    if (sel && sel.value === ans[q]) score++;
+  }
+  document.getElementById('score').innerText = 'Your Score: ' + score + ' / 10';
+}
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div>
+</section><hr class="d">
+
+<!-- Q23 -->
+<section class="sec" id="q23">
+<div class="sh"><span class="sn">Q23</span><span class="st">Student Marks Calculator — Total, Percentage, Grade</span><span class="tb j">JS</span><span class="tb c">CSS</span></div>
+<div class="cb"><div class="cl">marks_calc.html<button class="cpb" onclick="cp(this)">Copy</button></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Marks Calculator&lt;/title&gt;
+  &lt;style&gt;
+    body { font-family: Arial; padding: 20px;
+           background: linear-gradient(135deg, #74b9ff, #a29bfe); }
+    .box { background: white; padding: 24px; border-radius: 10px;
+           max-width: 400px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+    input { display: block; margin: 4px 0 12px; padding: 8px; width: 100%; }
+    button { padding: 9px 22px; background: navy; color: white;
+             border: none; cursor: pointer; width: 100%; margin-top: 4px; }
+    button:hover { background: #003080; }
+    #result { margin-top: 14px; padding: 12px; background: #f0fff0;
+              border-left: 4px solid green; display: none; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class="box"&gt;
+  &lt;h2&gt;Marks Calculator&lt;/h2&gt;
+  Name: &lt;input type="text" id="sname" placeholder="Student name"&gt;
+  Sub1: &lt;input type="number" id="m1" placeholder="Marks"&gt;
+  Sub2: &lt;input type="number" id="m2" placeholder="Marks"&gt;
+  Sub3: &lt;input type="number" id="m3" placeholder="Marks"&gt;
+  Sub4: &lt;input type="number" id="m4" placeholder="Marks"&gt;
+  Sub5: &lt;input type="number" id="m5" placeholder="Marks"&gt;
+  &lt;button onclick="calculate()"&gt;Calculate&lt;/button&gt;
+  &lt;div id="result"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function calculate() {
+  let name  = document.getElementById('sname').value;
+  let marks = [
+    +document.getElementById('m1').value,
+    +document.getElementById('m2').value,
+    +document.getElementById('m3').value,
+    +document.getElementById('m4').value,
+    +document.getElementById('m5').value
+  ];
+
+  let total   = marks.reduce((a, b) => a + b, 0);
+  let percent = (total / 500) * 100;
+  let grade;
+
+  if (percent &gt;= 75)      grade = 'A';
+  else if (percent &gt;= 60) grade = 'B';
+  else if (percent &gt;= 50) grade = 'C';
+  else                     grade = 'F - Fail';
+
+  let res = document.getElementById('result');
+  res.style.display = 'block';
+  res.innerHTML = '&lt;b&gt;Name:&lt;/b&gt; ' + name + '&lt;br&gt;' +
+                  '&lt;b&gt;Total:&lt;/b&gt; ' + total + ' / 500&lt;br&gt;' +
+                  '&lt;b&gt;Percentage:&lt;/b&gt; ' + percent.toFixed(2) + '%&lt;br&gt;' +
+                  '&lt;b&gt;Grade:&lt;/b&gt; ' + grade;
+}
+&lt;/script&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div>
+</section><hr class="d">
+
+<!-- Q24 -->
+<section class="sec" id="q24">
+<div class="sh"><span class="sn">Q24</span><span class="st">PHP Feedback Form — Display + Date & Time</span><span class="tb p">PHP</span></div>
+<div class="cb"><div class="cl">feedback.php<button class="cpb" onclick="cp(this)">Copy</button></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Feedback Form&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;Feedback Form&lt;/h2&gt;
+
+  &lt;form method="POST" action=""&gt;
+    Name:     &lt;input type="text"  name="name"     required&gt;&lt;br&gt;&lt;br&gt;
+    Email:    &lt;input type="email" name="email"    required&gt;&lt;br&gt;&lt;br&gt;
+    Rating:
+    &lt;select name="rating"&gt;
+      &lt;option&gt;Excellent&lt;/option&gt;
+      &lt;option&gt;Good&lt;/option&gt;
+      &lt;option&gt;Average&lt;/option&gt;
+      &lt;option&gt;Poor&lt;/option&gt;
+    &lt;/select&gt;&lt;br&gt;&lt;br&gt;
+    Feedback: &lt;textarea name="feedback" rows="3"&gt;&lt;/textarea&gt;&lt;br&gt;&lt;br&gt;
+    &lt;input type="submit" value="Submit Feedback"&gt;
+  &lt;/form&gt;
+
+&lt;?php
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    echo "&lt;hr&gt;&lt;h3&gt;Your Feedback:&lt;/h3&gt;";
+    echo "&lt;p&gt;Name: "     . $_POST['name']     . "&lt;/p&gt;";
+    echo "&lt;p&gt;Email: "    . $_POST['email']    . "&lt;/p&gt;";
+    echo "&lt;p&gt;Rating: "   . $_POST['rating']   . "&lt;/p&gt;";
+    echo "&lt;p&gt;Feedback: " . $_POST['feedback'] . "&lt;/p&gt;";
+    echo "&lt;p&gt;Date: " . date("d-m-Y") . " | Time: " . date("h:i:s A") . "&lt;/p&gt;";
+  }
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div>
+</section>
+
+<div style="height:50px"></div>
+</main>
+
+<script>
+function go(id) {
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  document.querySelectorAll('.ni').forEach(n => n.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+}
+function cp(btn) {
+  const code = btn.closest('.cb').querySelector('pre').innerText;
+  navigator.clipboard.writeText(code).then(() => {
+    btn.textContent = 'Copied!'; btn.classList.add('ok');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 2000);
+  });
+}
+const secs = document.querySelectorAll('.sec');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if(window.scrollY >= s.offsetTop - 80) cur = s.id; });
+  document.querySelectorAll('.ni').forEach(n => {
+    n.classList.remove('active');
+    if(n.getAttribute('onclick')?.includes(cur)) n.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

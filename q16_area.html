@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head><title>Area Calculator</title></head>
+<body>
+  <h2>Area Calculator</h2>
+  Shape:
+  <select id="shape" onchange="showFields()">
+    <option value="">-- Select --</option>
+    <option value="rect">Rectangle</option>
+    <option value="tri">Triangle</option>
+    <option value="circ">Circle</option>
+  </select>
+  <br><br>
+  <div id="fields"></div>
+  <p id="result"></p>
+
+<script>
+function showFields() {
+  let s = document.getElementById('shape').value;
+  let html = '';
+  switch(s) {
+    case 'rect': html = 'Length: <input id="l"> Width: <input id="w">'; break;
+    case 'tri':  html = 'Base: <input id="b"> Height: <input id="h">';  break;
+    case 'circ': html = 'Radius: <input id="r">';                        break;
+  }
+  if (html) html += ' <button onclick="calcArea()">Calculate</button>';
+  document.getElementById('fields').innerHTML = html;
+}
+
+function calcArea() {
+  let s = document.getElementById('shape').value;
+  let area;
+  switch(s) {
+    case 'rect': area = document.getElementById('l').value * document.getElementById('w').value; break;
+    case 'tri':  area = 0.5 * document.getElementById('b').value * document.getElementById('h').value; break;
+    case 'circ': area = (Math.PI * Math.pow(document.getElementById('r').value, 2)).toFixed(2); break;
+  }
+  document.getElementById('result').innerHTML = '<b>Area = ' + area + ' sq.units</b>';
+}
+</script>
+</body>
+</html>

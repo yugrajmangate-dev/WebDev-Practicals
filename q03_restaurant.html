@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Restaurant</title>
+  <style>
+    body { font-family: Arial; margin: 0; }
+    header { background: darkred; color: white; text-align: center; padding: 20px; }
+    nav    { background: #333; text-align: center; padding: 10px; }
+    nav a  { color: gold; margin: 0 15px; text-decoration: none; }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding: 20px;
+    }
+    .item { border: 1px solid #ccc; padding: 14px; text-align: center; border-radius: 6px; }
+    .item h3 { color: darkred; }
+    .price { color: green; font-weight: bold; }
+    footer { background: #333; color: white; text-align: center; padding: 12px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Spice Garden Restaurant</h1>
+  <p>Authentic Indian Cuisine</p>
+</header>
+
+<nav>
+  <a href="#menu">Menu</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<h2 id="menu" style="text-align:center; margin-top:20px;">Our Menu</h2>
+<div class="menu-grid">
+  <div class="item"><h3>Butter Chicken</h3><p>Creamy curry</p><p class="price">Rs.280</p></div>
+  <div class="item"><h3>Biryani</h3><p>Fragrant rice</p><p class="price">Rs.320</p></div>
+  <div class="item"><h3>Dal Makhani</h3><p>Black lentils</p><p class="price">Rs.220</p></div>
+  <div class="item"><h3>Garlic Naan</h3><p>Tandoor bread</p><p class="price">Rs.60</p></div>
+  <div class="item"><h3>Paneer Tikka</h3><p>Grilled paneer</p><p class="price">Rs.250</p></div>
+  <div class="item"><h3>Gulab Jamun</h3><p>Sweet dessert</p><p class="price">Rs.80</p></div>
+</div>
+
+<footer>Contact: 020-12345678 | MG Road, Pune</footer>
+</body>
+</html>

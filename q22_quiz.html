@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Quiz</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .q   { margin: 14px 0; padding: 12px; background: #f5f5f5; border-radius: 5px; }
+    button { margin-top: 16px; padding: 9px 22px; background: navy; color: white; border: none; cursor: pointer; }
+    #score { font-size: 20px; font-weight: bold; color: navy; margin-top: 14px; }
+  </style>
+</head>
+<body>
+  <h2>Simple Quiz</h2>
+  <form id="qf">
+
+  <div class="q">1. HTML stands for?<br>
+    <input type="radio" name="q1" value="a"> Hyper Transfer Markup Language<br>
+    <input type="radio" name="q1" value="b"> Hyper Text Markup Language<br>
+    <input type="radio" name="q1" value="c"> Hyper Text Modern Language
+  </div>
+
+  <div class="q">2. Tag for hyperlink?<br>
+    <input type="radio" name="q2" value="a"> &lt;link&gt;<br>
+    <input type="radio" name="q2" value="b"> &lt;a&gt;<br>
+    <input type="radio" name="q2" value="c"> &lt;href&gt;
+  </div>
+
+  <div class="q">3. CSS stands for?<br>
+    <input type="radio" name="q3" value="a"> Cascading Style Sheets<br>
+    <input type="radio" name="q3" value="b"> Colorful Style Sheets<br>
+    <input type="radio" name="q3" value="c"> Computer Style System
+  </div>
+
+  <div class="q">4. JS method to select element by ID?<br>
+    <input type="radio" name="q4" value="a"> querySelector()<br>
+    <input type="radio" name="q4" value="b"> getElementById()<br>
+    <input type="radio" name="q4" value="c"> getElement()
+  </div>
+
+  <div class="q">5. PHP stands for?<br>
+    <input type="radio" name="q5" value="a"> Private Home Page<br>
+    <input type="radio" name="q5" value="b"> PHP Hypertext Preprocessor<br>
+    <input type="radio" name="q5" value="c"> Public Home Page
+  </div>
+
+  <div class="q">6. CSS property for text colour?<br>
+    <input type="radio" name="q6" value="a"> font-color<br>
+    <input type="radio" name="q6" value="b"> text-color<br>
+    <input type="radio" name="q6" value="c"> color
+  </div>
+
+  <div class="q">7. Largest heading tag?<br>
+    <input type="radio" name="q7" value="a"> &lt;h6&gt;<br>
+    <input type="radio" name="q7" value="b"> &lt;h1&gt;<br>
+    <input type="radio" name="q7" value="c"> &lt;heading&gt;
+  </div>
+
+  <div class="q">8. JavaScript is a ___ language?<br>
+    <input type="radio" name="q8" value="a"> Compiled<br>
+    <input type="radio" name="q8" value="b"> Interpreted<br>
+    <input type="radio" name="q8" value="c"> Machine-level
+  </div>
+
+  <div class="q">9. PHP file extension?<br>
+    <input type="radio" name="q9" value="a"> .html<br>
+    <input type="radio" name="q9" value="b"> .php<br>
+    <input type="radio" name="q9" value="c"> .js
+  </div>
+
+  <div class="q">10. Bootstrap is a ___ framework?<br>
+    <input type="radio" name="q10" value="a"> Backend<br>
+    <input type="radio" name="q10" value="b"> Database<br>
+    <input type="radio" name="q10" value="c"> Frontend CSS
+  </div>
+
+  <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+  </form>
+  <div id="score"></div>
+
+<script>
+// Correct answers
+const ans = {q1:'b',q2:'b',q3:'a',q4:'b',q5:'b',q6:'c',q7:'b',q8:'b',q9:'b',q10:'c'};
+
+function submitQuiz() {
+  let score = 0;
+  for (let q in ans) {
+    let sel = document.querySelector('input[name="'+q+'"]:checked');
+    if (sel && sel.value === ans[q]) score++;
+  }
+  document.getElementById('score').innerText = 'Your Score: ' + score + ' / 10';
+}
+</script>
+</body>
+</html>

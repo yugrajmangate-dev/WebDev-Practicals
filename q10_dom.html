@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head><title>DOM Demo</title></head>
+<body>
+  <h2>DOM Dynamic Content</h2>
+
+  <input type="text" id="name" placeholder="Enter student name">
+  <input type="number" id="marks" placeholder="Enter marks">
+  <button onclick="addStudent()">Add Student</button>
+  <button onclick="clearAll()">Clear</button>
+
+  <div id="output"></div>
+
+<script>
+let count = 1;
+
+function addStudent() {
+  let name  = document.getElementById('name').value;
+  let marks = document.getElementById('marks').value;
+
+  // Create new element using DOM
+  let p = document.createElement('p');
+  p.innerHTML = count + '. <b>' + name + '</b> — Marks: ' + marks;
+  document.getElementById('output').appendChild(p);
+
+  // Change heading dynamically
+  document.querySelector('h2').innerText = 'Students Added: ' + count;
+  count++;
+}
+
+function clearAll() {
+  document.getElementById('output').innerHTML = '';
+  document.querySelector('h2').innerText = 'DOM Dynamic Content';
+  count = 1;
+}
+</script>
+</body>
+</html>

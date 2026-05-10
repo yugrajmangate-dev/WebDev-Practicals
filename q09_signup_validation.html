@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Library Signup</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    input { display: block; margin: 5px 0 2px; padding: 7px; width: 260px; }
+    .err { color: red; font-size: 12px; }
+    button { margin-top: 12px; padding: 8px 20px; background: navy; color: white; border: none; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2>Library Signup</h2>
+  <form onsubmit="return validate()">
+    Name:    <input type="text"   id="name">   <span class="err" id="e1"></span>
+    Email:   <input type="text"   id="email">  <span class="err" id="e2"></span>
+    Mobile:  <input type="text"   id="mob">    <span class="err" id="e3"></span>
+    Password:<input type="password" id="pass"> <span class="err" id="e4"></span>
+    <button>Sign Up</button>
+  </form>
+
+<script>
+function validate() {
+  let ok = true;
+  // clear errors
+  ['e1','e2','e3','e4'].forEach(id => document.getElementById(id).innerText = '');
+
+  let name  = document.getElementById('name').value.trim();
+  let email = document.getElementById('email').value.trim();
+  let mob   = document.getElementById('mob').value.trim();
+  let pass  = document.getElementById('pass').value;
+
+  if (name == '') {
+    document.getElementById('e1').innerText = 'Name required'; ok = false;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('e2').innerText = 'Invalid email'; ok = false;
+  }
+  if (!/^[6-9]\d{9}$/.test(mob)) {
+    document.getElementById('e3').innerText = 'Invalid mobile (10 digits)'; ok = false;
+  }
+  if (pass.length < 6) {
+    document.getElementById('e4').innerText = 'Min 6 characters'; ok = false;
+  }
+
+  if (ok) alert('Signup Successful!');
+  return false;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Survey Form</title>
+  <style>
+    body { font-family: 'Times New Roman', Times, serif; padding: 20px; background: #f0f0f0; }
+    input, select, textarea { display: block; margin: 6px 0 12px; padding: 7px; width: 300px; }
+    button { padding: 8px 20px; background: blue; color: white; border: none; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2>Student Survey Form</h2>
+  <form>
+    Name: <input type="text" placeholder="Your name">
+    Email: <input type="email" placeholder="Your email">
+
+    Gender:<br>
+    <input type="radio" name="g"> Male
+    <input type="radio" name="g"> Female<br><br>
+
+    Year:
+    <select>
+      <option>First Year</option>
+      <option>Second Year</option>
+      <option>Third Year</option>
+    </select>
+
+    Interests:<br>
+    <input type="checkbox"> Web Dev
+    <input type="checkbox"> AI/ML
+    <input type="checkbox"> Cybersecurity<br><br>
+
+    Feedback: <textarea rows="3"></textarea>
+
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
